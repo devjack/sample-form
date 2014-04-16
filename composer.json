@@ -1,0 +1,23 @@
+{
+    "name": "sydnerdrage/sample-form",
+    "description": "Sample form usage with custom elements and views using Zend Framework 2",
+    "license": "MIT",
+    "keywords": [
+        "framework",
+        "zf2"
+    ],
+    "homepage": "http://sydnerdrage.com/",
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zendframework": "2.3.*",
+    },
+
+    "autoload": {
+        "psr-4": {
+            "SampleForm\\": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
