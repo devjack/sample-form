@@ -1,0 +1,36 @@
+<?php
+/**
+ * Zend\Form\View\Helper\FormRow allows usage of a partial to render
+ * form elements in a specific way.
+ *
+ * Our custom view helper extends FormRow and uses this .phtml file
+ * as a gateway to use additional partials for other element types
+ *
+ * The reason this approach seems the best one to use is because
+ * not all existing Zend Form view helpers allow usage of partials
+ * by default.  e.g. FormSelect does not allow partials by default.
+ *
+ * The switch statement allows choosing a relevant partial to use
+ * when rendering a particular form element type.
+ *
+ * The type is determined by the value of the attribute 'type'.
+ */
+
+$attributes = $element->getAttributes();
+switch($attributes['type'])
+{
+    case 'datetime':
+        echo $this->partial('partial/form/form-datetime', array('label'=>$label, 'attributes'=>$attributes, 'element'=>$element));
+        break;
+    case 'upload': // intentionally fall through to the file partial
+    case 'file':
+        echo $this->partial('partial/form/form-file', array('label'=>$label, 'attributes'=>$attributes, 'element'=>$element));
+        break;
+    case 'submit':
+        echo $this->partial('partial/form/form-submit', array('label'=>$label, 'attributes'=>$attributes, 'element'=>$element));
+        break;
+    case 'text':
+        echo $this->partial('partial/form/form-text', array('label'=>$label, 'attributes'=>$attributes, 'element'=>$element));
+        break;
+}
+?>

@@ -1,0 +1,19 @@
+
+<?php $messages = $element->getMessages(); ?>
+
+<div class="control-group">
+    <label class="control-label" for="<?= $element->getName();?>"><?= $element->getLabel();?></label>
+    <div class="controls">
+        <?= $this->formFile($element); ?>
+    </div>
+</div>
+
+<?php if (! empty($messages)): ?>
+    <div>
+        <p class="text-error"><strong>Errors:</strong><br />
+            <?php foreach ($element->getMessages() as $message) : ?>
+                <?= $message . '<br/>'; ?>
+            <?php endforeach ?>
+        </p>
+    </div>
+<?php endif ?>

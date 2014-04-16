@@ -5,8 +5,12 @@ namespace SampleForm\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+use SampleForm\Form\Feature\UploadFormAwareTrait;
+
 class MyFileController extends AbstractActionController
 {
+    use UploadFormAwareTrait;
+
     /**
      * @return ViewModel
      *
@@ -14,6 +18,10 @@ class MyFileController extends AbstractActionController
      */
     public function indexAction() {
 
-        return new ViewModel();
+        return new ViewModel(
+            array(
+                'form' => $this->getUploadForm(),
+            )
+        );
     }
 }

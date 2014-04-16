@@ -1,0 +1,15 @@
+<?php /** @var \SampleForm\Form\UploadForm $form */ ?>
+
+<?php $form->prepare();?>
+<?= $this->form()->openTag($form); ?>
+
+<?= $this->formRow($form->get('csrf')); ?>
+
+<fieldset>
+    <?= $this->formElementPartial($form->get('title')); ?>
+    <?= $this->formElementPartial($form->get('created_date')); ?>
+    <?= $this->formElementPartial($form->get('file')); ?>
+    <div class="save_changes_container_top">
+        <?= $this->formElementPartial($form->get('submit')); ?>
+    </div>
+</fieldset>
